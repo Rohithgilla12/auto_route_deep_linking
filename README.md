@@ -1,16 +1,7 @@
 # auto_route_deep_linking
 
-A new Flutter project.
+Minimal reproducible example of my deep linking issue with `auto_route` Flutter library.
 
-## Getting Started
+I basically put all the code into the `main.dart` file, then added a few dependencies in the `pubspec.yaml` file, and added deep linking in the `AndroidManifest.xml` file, and the `Infos.plist` file.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Hope this will help 🙂
