@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(context) => AutoTabsScaffold(
       lazyLoad: false,
       animationDuration: const Duration(),
-      routes: routers.values.toList(),
+      routes: const [Page1EmptyRoute(), Page2EmptyRoute()],
       bottomNavigationBuilder: (_, tabsRouter) => NavigationBar(
             onDestinationSelected: tabsRouter.setActiveIndex,
             selectedIndex: tabsRouter.activeIndex,
@@ -87,11 +87,6 @@ class Page1EmptyView extends AutoRouter {
 class Page2EmptyView extends AutoRouter {
   const Page2EmptyView({super.key});
 }
-
-const routers = {
-  'page1': Page1EmptyRoute(),
-  'page2': Page2EmptyRoute(),
-};
 
 @RoutePage()
 class Page1View extends StatelessWidget {
