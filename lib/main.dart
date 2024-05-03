@@ -70,7 +70,7 @@ class AppRouter extends $AppRouter {
   AppRouter({GlobalKey<NavigatorState>? navigatorKey}) : super(navigatorKey: navigatorKey);
 
   @override
-  RouteType get defaultRouteType => const RouteType.material();
+  RouteType get defaultRouteType => const RouteType.adaptive();
 
   @override
   final routes = [
@@ -92,6 +92,8 @@ class AppRouter extends $AppRouter {
             AutoRoute(path: '', page: Page2Route.page),
           ],
         ),
+        AutoRoute(page: AboutPage.page, path: 'about'),
+        AutoRoute(page: Foo.page, path: 'foo'),
       ],
     ),
   ];
