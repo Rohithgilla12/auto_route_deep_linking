@@ -1,4 +1,9 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_route_deep_linking/router/fs_router.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'main.gr.dart';
@@ -13,13 +18,25 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _appRouter = AppRouter();
+  final FsRouter appRouter = FsRouter();
 
   @override
   Widget build(context) => MaterialApp.router(
         title: 'auto_route deep linking',
-        theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-        routerConfig: _appRouter.config(),
+        theme: ThemeData.dark(),
+        routerConfig: appRouter.router.config(
+          navigatorObservers: () => [AutoRouteObserver()],
+          deepLinkTransformer: (uri) {
+            log('Deep link: $uri');
+
+            return SynchronousFuture(uri);
+          },
+          deepLinkBuilder: (deepLink) {
+            log('Deep link builder: ${deepLink.uri.toString()}');
+
+            return deepLink;
+          },
+        ),
       );
 }
 
@@ -50,6 +67,8 @@ class _HomeViewState extends State<HomeView> {
 
 @AutoRouterConfig(replaceInRouteName: 'View,Route')
 class AppRouter extends $AppRouter {
+  AppRouter({GlobalKey<NavigatorState>? navigatorKey}) : super(navigatorKey: navigatorKey);
+
   @override
   RouteType get defaultRouteType => const RouteType.material();
 
