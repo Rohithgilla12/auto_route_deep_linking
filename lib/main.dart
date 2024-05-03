@@ -18,8 +18,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(context) => MaterialApp.router(
         title: 'auto_route deep linking',
-        theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
+        theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
         routerConfig: _appRouter.config(),
       );
 }
@@ -35,17 +34,18 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(context) => AutoTabsScaffold(
-      lazyLoad: false,
-      animationDuration: const Duration(),
-      routes: const [Page1EmptyRoute(), Page2EmptyRoute()],
-      bottomNavigationBuilder: (_, tabsRouter) => NavigationBar(
-            onDestinationSelected: tabsRouter.setActiveIndex,
-            selectedIndex: tabsRouter.activeIndex,
-            destinations: const [
-              NavigationDestination(icon: Text('1'), label: '1'),
-              NavigationDestination(icon: Text('2'), label: '2'),
-            ],
-          ));
+        lazyLoad: false,
+        animationDuration: const Duration(),
+        routes: const [Page1EmptyRoute(), Page2EmptyRoute()],
+        bottomNavigationBuilder: (_, tabsRouter) => NavigationBar(
+          onDestinationSelected: tabsRouter.setActiveIndex,
+          selectedIndex: tabsRouter.activeIndex,
+          destinations: const [
+            NavigationDestination(icon: Text('1'), label: '1'),
+            NavigationDestination(icon: Text('2'), label: '2'),
+          ],
+        ),
+      );
 }
 
 @AutoRouterConfig(replaceInRouteName: 'View,Route')
